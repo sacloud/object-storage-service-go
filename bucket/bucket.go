@@ -12,7 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package service
+package bucket
 
-// Version バージョン
-const Version = "0.0.1-dev"
+import "time"
+
+type Bucket struct {
+	Name         string
+	CreationDate *time.Time
+}

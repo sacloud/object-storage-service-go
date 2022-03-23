@@ -14,5 +14,27 @@
 
 package service
 
-// Version バージョン
-const Version = "0.0.1-dev"
+import (
+	"fmt"
+	"runtime"
+
+	client "github.com/sacloud/api-client-go"
+	objectstorage "github.com/sacloud/object-storage-api-go"
+)
+
+// UserAgent APIリクエスト時のユーザーエージェント
+var UserAgent = fmt.Sprintf(
+	"object-storage-service-go/%s (%s/%s; +https://github.com/sacloud/object-storage-service-go) %s",
+	Version,
+	runtime.GOOS,
+	runtime.GOARCH,
+	objectstorage.UserAgent,
+)
+
+func NewClient() *objectstorage.Client {
+	return &objectstorage.Client{
+		Options: &client.Options{
+			UserAgent: UserAgent,
+		},
+	}
+}
