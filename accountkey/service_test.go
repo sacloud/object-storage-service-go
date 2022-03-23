@@ -12,11 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package account
+package accountkey
 
 import (
 	"net/http/httptest"
 	"testing"
+	"time"
 
 	objectstorage "github.com/sacloud/object-storage-api-go"
 	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
@@ -26,15 +27,19 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var siteId = "isk01"
+var (
+	siteId    = "isk01"
+	accountId = "100000000001"
+)
 
 func TestService_CRUD_plus_L(t *testing.T) {
-	server := initFakeServer()
+	fakeServer := initFakeServer()
 	client := &objectstorage.Client{
-		APIRootURL: server.URL,
+		APIRootURL: fakeServer.URL,
 	}
+
 	svc := New(client)
-	var account *v1.Account
+	var accountKey *v1.AccountKey
 
 	t.Run("create", func(t *testing.T) {
 		created, err := svc.Create(&CreateRequest{
@@ -42,13 +47,13 @@ func TestService_CRUD_plus_L(t *testing.T) {
 		})
 		require.NoError(t, err)
 		require.NotNil(t, created)
-		account = created
+		accountKey = created
 	})
 
 	t.Run("read", func(t *testing.T) {
 		read, err := svc.Read(&ReadRequest{
 			SiteId: siteId,
-			Id:     account.ResourceId.String(),
+			Id:     accountKey.Id.String(),
 		})
 		require.NoError(t, err)
 		require.NotNil(t, read)
@@ -61,7 +66,7 @@ func TestService_CRUD_plus_L(t *testing.T) {
 			Id:     id,
 		})
 		require.Nil(t, read)
-		require.EqualError(t, err, `account "`+id+`" not found`)
+		require.EqualError(t, err, `account-key "`+id+`" not found`)
 
 		_, errIsNotFoundError := err.(service.NotFoundError)
 		require.True(t, errIsNotFoundError)
@@ -74,7 +79,10 @@ func TestService_CRUD_plus_L(t *testing.T) {
 		require.NoError(t, err)
 		require.Len(t, found, 1)
 
-		require.Equal(t, account, found[0])
+		// Note: AccountKey.SecretKeyは作成時のみ参照可能なのでそれ以外の項目を比較する
+		key := *accountKey
+		key.Secret = ""
+		require.Equal(t, &key, found[0])
 	})
 
 	t.Run("delete return NotFoundError when account is not found", func(t *testing.T) {
@@ -83,7 +91,7 @@ func TestService_CRUD_plus_L(t *testing.T) {
 			SiteId: siteId,
 			Id:     id,
 		})
-		require.EqualError(t, err, `account "`+id+`" not found`)
+		require.EqualError(t, err, `account-key "`+id+`" not found`)
 
 		_, errIsNotFoundError := err.(service.NotFoundError)
 		require.True(t, errIsNotFoundError)
@@ -92,7 +100,7 @@ func TestService_CRUD_plus_L(t *testing.T) {
 	t.Run("delete", func(t *testing.T) {
 		err := svc.Delete(&DeleteRequest{
 			SiteId: siteId,
-			Id:     account.ResourceId.String(),
+			Id:     accountKey.Id.String(),
 		})
 		require.NoError(t, err)
 
@@ -117,6 +125,11 @@ func initFakeServer() *httptest.Server {
 					DisplayOrder:    1,
 					EndpointBase:    "isk01.sakurastorage.jp",
 				},
+			},
+			Account: &v1.Account{
+				Code:       v1.Code("member@account@isk01"),
+				CreatedAt:  v1.CreatedAt(time.Now()),
+				ResourceId: v1.ResourceID(accountId),
 			},
 		},
 	}
