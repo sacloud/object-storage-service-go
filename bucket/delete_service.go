@@ -12,7 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package service
+package bucket
 
-// Version バージョン
-const Version = "0.0.1-dev"
+import (
+	"context"
+
+	objectstorage "github.com/sacloud/object-storage-api-go"
+)
+
+func (s *Service) Delete(req *DeleteRequest) error {
+	return s.DeleteWithContext(context.Background(), req)
+}
+
+func (s *Service) DeleteWithContext(ctx context.Context, req *DeleteRequest) error {
+	if err := req.Validate(); err != nil {
+		return err
+	}
+
+	bucketOp := objectstorage.NewBucketOp(s.client)
+	return bucketOp.Delete(ctx, req.SiteId, req.Id)
+}

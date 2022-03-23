@@ -12,7 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package service
+package bucket
 
-// Version バージョン
-const Version = "0.0.1-dev"
+import (
+	"github.com/sacloud/packages-go/validate"
+)
+
+type CreateRequest struct {
+	AccessKey string `service:"-" validate:"required"`
+	SecretKey string `service:"-" validate:"required"`
+
+	SiteId string `service:"-" validate:"required"`
+	Id     string `service:"-" validate:"required"` // バケットID(== バケット名)
+}
+
+func (req *CreateRequest) Validate() error {
+	return validate.New().Struct(req)
+}

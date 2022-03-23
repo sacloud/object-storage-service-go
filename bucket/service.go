@@ -12,7 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package service
+package bucket
 
-// Version バージョン
-const Version = "0.0.1-dev"
+import objectstorage "github.com/sacloud/object-storage-api-go"
+
+// Service provides a high-level API of for Site
+type Service struct {
+	client *objectstorage.Client
+}
+
+// New returns new service instance of Archive
+func New(client *objectstorage.Client) *Service {
+	return &Service{client: client}
+}
