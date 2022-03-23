@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/credentials v1.9.0
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.25.0
 	github.com/sacloud/api-client-go v0.0.3
-	github.com/sacloud/object-storage-api-go v0.0.4
+	github.com/sacloud/object-storage-api-go v0.0.5-0.20220323131139-89c78dc904c0
 	github.com/sacloud/packages-go v0.0.2
 	github.com/stretchr/testify v1.7.0
 )
@@ -29,6 +29,7 @@ require (
 	github.com/aws/smithy-go v1.11.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deepmap/oapi-codegen v1.9.1 // indirect
+	github.com/getlantern/deepcopy v0.0.0-20160317154340-7f45deb8130a // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.7.4 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
