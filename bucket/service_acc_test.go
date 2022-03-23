@@ -75,7 +75,7 @@ func TestAccService_CRUD_plus_L(t *testing.T) {
 		})
 		require.EqualError(t, err, `bucket "`+notExistName+`" not found`)
 
-		_, errIsNotFoundError := err.(NotFoundError)
+		_, errIsNotFoundError := err.(service.NotFoundError)
 		require.True(t, errIsNotFoundError)
 	})
 

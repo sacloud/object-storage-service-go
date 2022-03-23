@@ -43,6 +43,7 @@ github.com/deepmap/oapi-codegen v1.9.1 h1:yHmEnA7jSTUMQgV+uN02WpZtwHnz2CBW3mZRIx
 github.com/deepmap/oapi-codegen v1.9.1/go.mod h1:PLqNAhdedP8ttRpBBkzLKU3bp+Fpy+tTgeAMlztR2cw=
 github.com/getkin/kin-openapi v0.87.0/go.mod h1:660oXbgy5JFMKreazJaQTw7o+X00qeSyhcnluiMv+Xg=
 github.com/getlantern/deepcopy v0.0.0-20160317154340-7f45deb8130a h1:yU/FENpkHYISWsQrbr3pcZOBj0EuRjPzNc1+dTCLu44=
+github.com/getlantern/deepcopy v0.0.0-20160317154340-7f45deb8130a/go.mod h1:AEugkNu3BjBxyz958nJ5holD9PRjta6iprcoUauDbU4=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
 github.com/gin-contrib/sse v0.1.0/go.mod h1:RHrZQHXnP2xjPF+u1gW/2HnVO7nvIa9PG3Gm+fLHvGI=
@@ -135,8 +136,8 @@ github.com/sacloud/api-client-go v0.0.3 h1:9xGKuBzWaYribd4jmq1Fe8Uijtr3taL9dwYKF
 github.com/sacloud/api-client-go v0.0.3/go.mod h1:fisKcJ5DUIPx+PpNrH+118tZ2ejp+pM6R+xEiICuv/Q=
 github.com/sacloud/go-http v0.0.4 h1:+vgx/uCctcGiHMe8jE+qirMKd3+d73MNZXK7nrUo0po=
 github.com/sacloud/go-http v0.0.4/go.mod h1:aYTXNuAnPmD6Ar3ktDaR1gPxJCPv2CqpppcYciy1hmo=
-github.com/sacloud/object-storage-api-go v0.0.4 h1:Qqgqrop7rhLuE1IdljB34EXd398tmtScYeMTFOoDdJA=
-github.com/sacloud/object-storage-api-go v0.0.4/go.mod h1:zbPyMvPwRZA8PToJotYkOv1o9btdHdGjWkeHj58PhfE=
+github.com/sacloud/object-storage-api-go v0.0.5-0.20220323131139-89c78dc904c0 h1:qG/A91XdlwRoPyJvN2JdkYEuh/K8C6iSOFp/8lKU1bo=
+github.com/sacloud/object-storage-api-go v0.0.5-0.20220323131139-89c78dc904c0/go.mod h1:zbPyMvPwRZA8PToJotYkOv1o9btdHdGjWkeHj58PhfE=
 github.com/sacloud/packages-go v0.0.2 h1:tvA/V8tjzaCeuQQVwby1Olq6RmjMI/LEdAe65+qcpYM=
 github.com/sacloud/packages-go v0.0.2/go.mod h1:Eny1qnbKr9n/5yfXDiwOC+0YMiBhK1HBYGjjmxes+CI=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
