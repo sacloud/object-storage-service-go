@@ -1,6 +1,11 @@
 # object-storage-service-go
 
-Go言語向けのさくらのクラウドAPIライブラリ  
+[![Go Reference](https://pkg.go.dev/badge/github.com/sacloud/object-storage-service-go.svg)](https://pkg.go.dev/github.com/sacloud/object-storage-service-go)
+[![Tests](https://github.com/sacloud/object-storage-service-go/workflows/Tests/badge.svg)](https://github.com/sacloud/object-storage-service-go/actions/workflows/tests.yaml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sacloud/object-storage-service-go)](https://goreportcard.com/report/github.com/sacloud/object-storage-service-go)
+
+
+さくらのオブジェクトストレージ高レベルAPIライブラリ  
 
 ## 概要
 
