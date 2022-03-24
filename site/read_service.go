@@ -16,11 +16,9 @@ package site
 
 import (
 	"context"
-	"fmt"
 
 	objectstorage "github.com/sacloud/object-storage-api-go"
 	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
-	service "github.com/sacloud/object-storage-service-go"
 )
 
 func (s *Service) Read(req *ReadRequest) (*v1.Cluster, error) {
@@ -32,12 +30,5 @@ func (s *Service) ReadWithContext(ctx context.Context, req *ReadRequest) (*v1.Cl
 		return nil, err
 	}
 	client := objectstorage.NewSiteOp(s.client)
-	site, err := client.Read(ctx, req.Id)
-	if err != nil {
-		if v1.IsError404(err) {
-			return nil, service.NotFoundError(fmt.Errorf("site %q not found", req.Id))
-		}
-		return nil, err
-	}
-	return site, nil
+	return client.Read(ctx, req.Id)
 }

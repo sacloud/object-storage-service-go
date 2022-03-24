@@ -17,10 +17,10 @@ package account
 import (
 	"context"
 	"fmt"
+	"net/http"
 
 	objectstorage "github.com/sacloud/object-storage-api-go"
 	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
-	service "github.com/sacloud/object-storage-service-go"
 )
 
 func (s *Service) Read(req *ReadRequest) (*v1.Account, error) {
@@ -39,5 +39,13 @@ func (s *Service) ReadWithContext(ctx context.Context, req *ReadRequest) (*v1.Ac
 	if account.ResourceId.String() == req.Id {
 		return account, nil
 	}
-	return nil, service.NotFoundError(fmt.Errorf("account %q not found", req.Id))
+
+	return nil, &v1.Error404{
+		Detail: v1.ErrorDetail{
+			Code:    http.StatusNotFound,
+			Errors:  nil,
+			Message: v1.ErrorMessage(fmt.Sprintf("account %q not found", req.Id)),
+			TraceId: "",
+		},
+	}
 }

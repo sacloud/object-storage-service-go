@@ -17,8 +17,9 @@ package bucket
 import (
 	"context"
 	"fmt"
+	"net/http"
 
-	service "github.com/sacloud/object-storage-service-go"
+	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
 )
 
 // Read バケットの参照
@@ -51,5 +52,10 @@ func (s *Service) ReadWithContext(ctx context.Context, req *ReadRequest) (*Bucke
 			return bucket, nil
 		}
 	}
-	return nil, service.NotFoundError(fmt.Errorf("bucket %q not found", req.Id))
+	return nil, &v1.Error404{
+		Detail: v1.ErrorDetail{
+			Code:    http.StatusNotFound,
+			Message: v1.ErrorMessage(fmt.Sprintf("bucket %q not found", req.Id)),
+		},
+	}
 }
