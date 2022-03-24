@@ -12,16 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sitestatus
+package status
 
-import (
-	"github.com/sacloud/packages-go/validate"
-)
+import objectstorage "github.com/sacloud/object-storage-api-go"
 
-type ReadRequest struct {
-	Id string `service:"-" validate:"required"`
+// Service provides a high-level API of for Site
+type Service struct {
+	client *objectstorage.Client
 }
 
-func (req *ReadRequest) Validate() error {
-	return validate.New().Struct(req)
+// New returns new service instance of Archive
+func New(client *objectstorage.Client) *Service {
+	return &Service{client: client}
 }

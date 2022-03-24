@@ -12,14 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package accountkey
+package accesskey
 
-import "github.com/sacloud/packages-go/validate"
+import (
+	"github.com/sacloud/packages-go/validate"
+)
 
-type FindRequest struct {
+type DeleteRequest struct {
 	SiteId string `service:"-" validate:"required"`
+	Id     string `service:"-" validate:"required"` // リソースId
 }
 
-func (req *FindRequest) Validate() error {
+func (req *DeleteRequest) Validate() error {
 	return validate.New().Struct(req)
 }
