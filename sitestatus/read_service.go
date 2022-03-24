@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package site
+package sitestatus
 
 import (
 	"context"
@@ -23,21 +23,21 @@ import (
 	service "github.com/sacloud/object-storage-service-go"
 )
 
-func (s *Service) Read(req *ReadRequest) (*v1.Cluster, error) {
+func (s *Service) Read(req *ReadRequest) (*v1.Status, error) {
 	return s.ReadWithContext(context.Background(), req)
 }
 
-func (s *Service) ReadWithContext(ctx context.Context, req *ReadRequest) (*v1.Cluster, error) {
+func (s *Service) ReadWithContext(ctx context.Context, req *ReadRequest) (*v1.Status, error) {
 	if err := req.Validate(); err != nil {
 		return nil, err
 	}
-	client := objectstorage.NewSiteOp(s.client)
-	site, err := client.Read(ctx, req.Id)
+	client := objectstorage.NewSiteStatusOp(s.client)
+	status, err := client.Read(ctx, req.Id)
 	if err != nil {
 		if v1.IsError404(err) {
 			return nil, service.NotFoundError(fmt.Errorf("site %q not found", req.Id))
 		}
 		return nil, err
 	}
-	return site, nil
+	return status, nil
 }
