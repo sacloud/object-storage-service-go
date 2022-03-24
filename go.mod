@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/credentials v1.9.0
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.25.0
 	github.com/sacloud/api-client-go v0.0.3
-	github.com/sacloud/object-storage-api-go v0.0.6-0.20220324003440-e04fbf8842c6
+	github.com/sacloud/object-storage-api-go v0.0.6-0.20220324052655-2a3ee1db4f96
 	github.com/sacloud/packages-go v0.0.2
 	github.com/stretchr/testify v1.7.0
 )
