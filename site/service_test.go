@@ -22,7 +22,6 @@ import (
 	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
 	"github.com/sacloud/object-storage-api-go/fake"
 	"github.com/sacloud/object-storage-api-go/fake/server"
-	service "github.com/sacloud/object-storage-service-go"
 	"github.com/stretchr/testify/require"
 )
 
@@ -52,10 +51,8 @@ func TestService_CRUD_plus_L(t *testing.T) {
 			Id: id,
 		})
 		require.Nil(t, read)
-		require.EqualError(t, err, `site "`+id+`" not found`)
-
-		_, errIsNotFoundError := err.(service.NotFoundError)
-		require.True(t, errIsNotFoundError)
+		require.Error(t, err)
+		require.True(t, v1.IsError404(err))
 	})
 
 	t.Run("list", func(t *testing.T) {
