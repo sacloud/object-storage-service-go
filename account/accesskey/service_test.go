@@ -19,10 +19,12 @@ import (
 	"testing"
 	"time"
 
+	client "github.com/sacloud/api-client-go"
 	objectstorage "github.com/sacloud/object-storage-api-go"
 	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
 	"github.com/sacloud/object-storage-api-go/fake"
 	"github.com/sacloud/object-storage-api-go/fake/server"
+	service "github.com/sacloud/object-storage-service-go"
 	"github.com/stretchr/testify/require"
 )
 
@@ -35,6 +37,9 @@ func TestAccountAccessKey_CRUD_plus_L(t *testing.T) {
 	fakeServer := initFakeServer()
 	client := &objectstorage.Client{
 		APIRootURL: fakeServer.URL,
+		Options: &client.Options{
+			UserAgent: service.UserAgent,
+		},
 	}
 
 	svc := New(client)
