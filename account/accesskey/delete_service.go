@@ -12,16 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package accountkey
+package accesskey
 
 import (
-	"github.com/sacloud/packages-go/validate"
+	"context"
+
+	objectstorage "github.com/sacloud/object-storage-api-go"
 )
 
-type CreateRequest struct {
-	SiteId string `service:"-" validate:"required"`
+func (s *Service) Delete(req *DeleteRequest) error {
+	return s.DeleteWithContext(context.Background(), req)
 }
 
-func (req *CreateRequest) Validate() error {
-	return validate.New().Struct(req)
+func (s *Service) DeleteWithContext(ctx context.Context, req *DeleteRequest) error {
+	if err := req.Validate(); err != nil {
+		return err
+	}
+	_, err := s.ReadWithContext(ctx, &ReadRequest{
+		SiteId: req.SiteId,
+		Id:     req.Id,
+	})
+	if err != nil {
+		return err
+	}
+
+	client := objectstorage.NewAccountOp(s.client)
+	return client.DeleteAccessKey(ctx, req.SiteId, req.Id)
 }

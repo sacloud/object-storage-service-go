@@ -12,23 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package accountkey
+package accesskey
 
-import (
-	"context"
+import objectstorage "github.com/sacloud/object-storage-api-go"
 
-	objectstorage "github.com/sacloud/object-storage-api-go"
-	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
-)
-
-func (s *Service) Create(req *CreateRequest) (*v1.AccountKey, error) {
-	return s.CreateWithContext(context.Background(), req)
+// Service provides a high-level API of for Site
+type Service struct {
+	client *objectstorage.Client
 }
 
-func (s *Service) CreateWithContext(ctx context.Context, req *CreateRequest) (*v1.AccountKey, error) {
-	if err := req.Validate(); err != nil {
-		return nil, err
-	}
-	client := objectstorage.NewAccountOp(s.client)
-	return client.CreateAccessKey(ctx, req.SiteId)
+// New returns new service instance of Archive
+func New(client *objectstorage.Client) *Service {
+	return &Service{client: client}
 }

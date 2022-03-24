@@ -12,30 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package accountkey
+package accesskey
 
 import (
 	"context"
 
 	objectstorage "github.com/sacloud/object-storage-api-go"
+	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
 )
 
-func (s *Service) Delete(req *DeleteRequest) error {
-	return s.DeleteWithContext(context.Background(), req)
+func (s *Service) Find(req *FindRequest) ([]*v1.AccountKey, error) {
+	return s.FindWithContext(context.Background(), req)
 }
 
-func (s *Service) DeleteWithContext(ctx context.Context, req *DeleteRequest) error {
-	if err := req.Validate(); err != nil {
-		return err
+func (s *Service) FindWithContext(ctx context.Context, req *FindRequest) ([]*v1.AccountKey, error) {
+	if req == nil {
+		req = &FindRequest{}
 	}
-	_, err := s.ReadWithContext(ctx, &ReadRequest{
-		SiteId: req.SiteId,
-		Id:     req.Id,
-	})
-	if err != nil {
-		return err
+	if err := req.Validate(); err != nil {
+		return nil, err
 	}
 
 	client := objectstorage.NewAccountOp(s.client)
-	return client.DeleteAccessKey(ctx, req.SiteId, req.Id)
+	return client.ListAccessKeys(ctx, req.SiteId)
 }

@@ -12,14 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package accountkey
+package accesskey
 
-import "github.com/sacloud/packages-go/validate"
+import (
+	"context"
 
-type FindRequest struct {
-	SiteId string `service:"-" validate:"required"`
+	objectstorage "github.com/sacloud/object-storage-api-go"
+	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
+)
+
+func (s *Service) Create(req *CreateRequest) (*v1.AccountKey, error) {
+	return s.CreateWithContext(context.Background(), req)
 }
 
-func (req *FindRequest) Validate() error {
-	return validate.New().Struct(req)
+func (s *Service) CreateWithContext(ctx context.Context, req *CreateRequest) (*v1.AccountKey, error) {
+	if err := req.Validate(); err != nil {
+		return nil, err
+	}
+	client := objectstorage.NewAccountOp(s.client)
+	return client.CreateAccessKey(ctx, req.SiteId)
 }

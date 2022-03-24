@@ -12,16 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package accountkey
+package accesskey
 
-import objectstorage "github.com/sacloud/object-storage-api-go"
+import (
+	"github.com/sacloud/packages-go/validate"
+)
 
-// Service provides a high-level API of for Site
-type Service struct {
-	client *objectstorage.Client
+type DeleteRequest struct {
+	SiteId string `service:"-" validate:"required"`
+	Id     string `service:"-" validate:"required"` // リソースId
 }
 
-// New returns new service instance of Archive
-func New(client *objectstorage.Client) *Service {
-	return &Service{client: client}
+func (req *DeleteRequest) Validate() error {
+	return validate.New().Struct(req)
 }
