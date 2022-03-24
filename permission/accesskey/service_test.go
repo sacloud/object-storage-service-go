@@ -30,7 +30,7 @@ var (
 	permissionId = int64(100000000001)
 )
 
-func TestService_CRUD_plus_L(t *testing.T) {
+func TestPermissionAccessKey_CRUD_plus_L(t *testing.T) {
 	fakeServer := initFakeServer()
 	client := &objectstorage.Client{
 		APIRootURL: fakeServer.URL,

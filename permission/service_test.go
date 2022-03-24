@@ -29,7 +29,7 @@ import (
 
 var siteId = "isk01"
 
-func TestService_CRUD_plus_L(t *testing.T) {
+func TestPermission_CRUD_plus_L(t *testing.T) {
 	server := initFakeServer()
 	client := &objectstorage.Client{
 		APIRootURL: server.URL,

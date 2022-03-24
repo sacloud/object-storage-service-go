@@ -21,12 +21,13 @@ import (
 	"os"
 	"testing"
 
+	v1 "github.com/sacloud/object-storage-api-go/apis/v1"
 	service "github.com/sacloud/object-storage-service-go"
 	"github.com/sacloud/packages-go/testutil"
 	"github.com/stretchr/testify/require"
 )
 
-func TestAccService_CRUD_plus_L(t *testing.T) {
+func TestAccBucket_CRUD_plus_L(t *testing.T) {
 	testutil.PreCheckEnvsFunc(
 		"SAKURACLOUD_ACCESS_TOKEN",
 		"SAKURACLOUD_ACCESS_TOKEN_SECRET",
@@ -73,10 +74,8 @@ func TestAccService_CRUD_plus_L(t *testing.T) {
 			SiteId:    siteId,
 			Id:        notExistName,
 		})
-		require.EqualError(t, err, `bucket "`+notExistName+`" not found`)
-
-		_, errIsNotFoundError := err.(service.NotFoundError)
-		require.True(t, errIsNotFoundError)
+		require.Error(t, err)
+		require.True(t, v1.IsError404(err))
 	})
 
 	t.Run("delete", func(t *testing.T) {
