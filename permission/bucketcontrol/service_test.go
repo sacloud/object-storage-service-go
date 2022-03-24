@@ -31,7 +31,7 @@ var siteId = "isk01"
 var permissionId = int64(100000001)
 var bucketName = testutil.Random(16, testutil.CharSetAlpha)
 
-func TestService_CRUD_plus_L(t *testing.T) {
+func TestPermissionBucketControl_CRUD_plus_L(t *testing.T) {
 	fakeServer := initFakeServer()
 	client := &objectstorage.Client{
 		APIRootURL: fakeServer.URL,
