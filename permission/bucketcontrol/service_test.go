@@ -106,7 +106,6 @@ func TestPermissionBucketControl_CRUD_plus_L(t *testing.T) {
 		require.NoError(t, err)
 		require.False(t, updated.CanRead.Bool())
 		require.False(t, updated.CanWrite.Bool())
-
 	})
 
 	t.Run("delete return NotFoundError when account is not found", func(t *testing.T) {

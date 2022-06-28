@@ -36,8 +36,8 @@ func (s *Service) FindWithContext(ctx context.Context, req *FindRequest) ([]*v1.
 	}
 
 	var results []*v1.BucketControl
-	for _, bc := range permission.BucketControls {
-		results = append(results, &bc)
+	for i := range permission.BucketControls {
+		results = append(results, &permission.BucketControls[i])
 	}
 	return results, nil
 }
