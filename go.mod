@@ -10,7 +10,7 @@ require (
 	github.com/sacloud/api-client-go v0.2.0
 	github.com/sacloud/object-storage-api-go v0.0.6
 	github.com/sacloud/packages-go v0.0.3
-	github.com/stretchr/testify v1.7.5
+	github.com/stretchr/testify v1.8.0
 )
 
 require (
