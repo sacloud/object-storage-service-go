@@ -64,8 +64,8 @@ github.com/go-playground/universal-translator v0.18.0 h1:82dyy6p4OuJq4/CByFNOn/j
 github.com/go-playground/universal-translator v0.18.0/go.mod h1:UvRDBj+xPUEGrFYl+lu/H90nyDXpg0fqeB/AQUGNTVA=
 github.com/go-playground/validator/v10 v10.4.1/go.mod h1:nlOn6nFhuKACm19sB/8EGNn9GlaMV7XkbRSipzJ0Ii4=
 github.com/go-playground/validator/v10 v10.9.0/go.mod h1:74x4gJWsvQexRdW8Pn3dXSGrTK4nAUsbPlLADvpJkos=
-github.com/go-playground/validator/v10 v10.10.1 h1:uA0+amWMiglNZKZ9FJRKUAe9U3RX91eVn1JYXMWt7ig=
-github.com/go-playground/validator/v10 v10.10.1/go.mod h1:i+3WkQ1FvaUjjxh1kSvIA4dMGDBiPU55YFDl0WbKdWU=
+github.com/go-playground/validator/v10 v10.11.0 h1:0W+xRM511GY47Yy3bZUbJVitCNg2BOGlCyvTqsp/xIw=
+github.com/go-playground/validator/v10 v10.11.0/go.mod h1:i+3WkQ1FvaUjjxh1kSvIA4dMGDBiPU55YFDl0WbKdWU=
 github.com/goccy/go-json v0.7.8/go.mod h1:6MelG93GURQebXPDq3khkgXZkazVtN9CRI+MGFi0w8I=
 github.com/golang-jwt/jwt v3.2.2+incompatible/go.mod h1:8pz2t5EyA70fFQQSrl6XZXzqecmYZeUEB8OUGHkxJ+I=
 github.com/golang/protobuf v1.3.3/go.mod h1:vzj43D7+SQXF/4pzW/hwtAqwc6iTitCiVSaWz5lYuqw=
@@ -140,8 +140,8 @@ github.com/sacloud/go-http v0.1.1 h1:yAQnZ/F2lCWuVxjkWAeU0M+kCNgBDu7Y8wrIKn97axs
 github.com/sacloud/go-http v0.1.1/go.mod h1:7HxUqATJaTUHYuqv93bhbTDCgqzxtxa9Zm/VvVtBUeU=
 github.com/sacloud/object-storage-api-go v0.0.6 h1:+mmDKOoi61E1MiiNlo0/Yxg3IUQjNPaobNunf3jhjIE=
 github.com/sacloud/object-storage-api-go v0.0.6/go.mod h1:zbPyMvPwRZA8PToJotYkOv1o9btdHdGjWkeHj58PhfE=
-github.com/sacloud/packages-go v0.0.3 h1:MtUVkZyAwvr3drjjTj4PKssRrm3hRGWPdEj+skIHbUA=
-github.com/sacloud/packages-go v0.0.3/go.mod h1:Eny1qnbKr9n/5yfXDiwOC+0YMiBhK1HBYGjjmxes+CI=
+github.com/sacloud/packages-go v0.0.4 h1:WrmHr7ERmZNes9ZTgRCFBpakZEBeUixWcDvk9J02gK4=
+github.com/sacloud/packages-go v0.0.4/go.mod h1:XWMBSNHT9YKY3lCh6yJsx1o1RRQQGpuhNqJA6bSHdD4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
