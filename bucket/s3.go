@@ -17,32 +17,15 @@ package bucket
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/aws/aws-sdk-go-v2/credentials"
-	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/minio/minio-go/v7"
+	"github.com/minio/minio-go/v7/pkg/credentials"
 )
 
-func s3Client(ctx context.Context, s3Endpoint, key, secret string) (*s3.Client, error) {
-	cred := credentials.NewStaticCredentialsProvider(key, secret, "")
-	endpoint := aws.EndpointResolverWithOptionsFunc(
-		func(service, region string, options ...interface{}) (aws.Endpoint, error) {
-			return aws.Endpoint{
-				URL:               "https://" + s3Endpoint,
-				HostnameImmutable: true,
-				SigningRegion:     region,
-			}, nil
-		},
-	)
-	cfg, err := config.LoadDefaultConfig(ctx,
-		config.WithRegion("jp-north-1"),
-		config.WithCredentialsProvider(cred),
-		config.WithEndpointResolverWithOptions(endpoint),
-	)
-	if err != nil {
-		return nil, err
-	}
-	return s3.NewFromConfig(cfg, func(o *s3.Options) {
-		o.UsePathStyle = true
-	}), nil
+func s3Client(ctx context.Context, s3Endpoint, key, secret string) (*minio.Client, error) {
+	return minio.New(s3Endpoint, &minio.Options{
+		Creds:        credentials.NewStaticV4(key, secret, ""),
+		Region:       "jp-north-1",
+		Secure:       true,
+		BucketLookup: minio.BucketLookupPath,
+	})
 }
