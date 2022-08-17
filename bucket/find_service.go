@@ -43,18 +43,14 @@ func (s *Service) FindWithContext(ctx context.Context, req *FindRequest) ([]*Buc
 		return nil, err
 	}
 
-	outputs, err := s3Client.ListBuckets(ctx, nil)
+	outputs, err := s3Client.ListBuckets(ctx)
 	if err != nil {
 		return nil, err
 	}
 
 	var results []*Bucket
-	for _, output := range outputs.Buckets {
-		bucket := &Bucket{CreationDate: output.CreationDate}
-		if output.Name != nil {
-			bucket.Name = *output.Name
-		}
-		results = append(results, bucket)
+	for i := range outputs {
+		results = append(results, &Bucket{Name: outputs[i].Name, CreationDate: &outputs[i].CreationDate})
 	}
 	return results, nil
 }
