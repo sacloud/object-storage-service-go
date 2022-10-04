@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/minio/minio-go/v7 v7.0.38
-	github.com/sacloud/api-client-go v0.2.1
+	github.com/sacloud/api-client-go v0.2.2
 	github.com/sacloud/object-storage-api-go v0.0.7
 	github.com/sacloud/packages-go v0.0.6
 	github.com/stretchr/testify v1.8.0
