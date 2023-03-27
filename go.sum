@@ -130,10 +130,10 @@ github.com/rogpeppe/go-internal v1.8.0/go.mod h1:WmiCO8CzOY8rg0OYDC4/i/2WRWAB6po
 github.com/rs/xid v1.4.0 h1:qd7wPTDkN6KQx2VmMBLrpHkiyQwgFXRnkOLacUiaSNY=
 github.com/rs/xid v1.4.0/go.mod h1:trrq9SKmegXys3aeAKXMUTdJsYXVwGY3RLcfgqegfbg=
 github.com/rwtodd/Go.Sed v0.0.0-20210816025313-55464686f9ef/go.mod h1:8AEUvGVi2uQ5b24BIhcr0GCcpd/RNAFWaN2CJFrWIIQ=
-github.com/sacloud/api-client-go v0.2.6 h1:/S3j/EhoYGUUdBsy40lxvaq1eLFLSL3wNDNnHfQYmyk=
-github.com/sacloud/api-client-go v0.2.6/go.mod h1:qPQ3uh9HWsRu/KzLAtr9ow9RNOAtgSy8cYAPXsDre+s=
-github.com/sacloud/go-http v0.1.4 h1:Fdt2NsiwzHh+fDqJe2HTGqV6tWdSS4M2bSwevGccMp8=
-github.com/sacloud/go-http v0.1.4/go.mod h1:0pw+tgXhTdwq/hPVizyaTgpN1G/WUZHTWRdbMuU+o/Q=
+github.com/sacloud/api-client-go v0.2.7 h1:u8e8UdvYtpLiqTsmbJ6fLXceTievQ104ZKZb7VQ5wq8=
+github.com/sacloud/api-client-go v0.2.7/go.mod h1:PwvwOLcCdGLWK7MS/yawllp8XI60kRzzA4tg14u1zQY=
+github.com/sacloud/go-http v0.1.5 h1:Ov1Vr4Olf0P+FG2okmpSaftCQnyHoCKZtbCC6RlNZUI=
+github.com/sacloud/go-http v0.1.5/go.mod h1:jlBMvkz4PuAelewTMOVzNQVuI2EyBYJGHS7nub79Yh0=
 github.com/sacloud/object-storage-api-go v0.0.8 h1:0MpZLpTvbmxChg6P+M3tK7nM/MU595AqfLdsMsLWN5o=
 github.com/sacloud/object-storage-api-go v0.0.8/go.mod h1:8Jtm0N2XzrUXNP130dqckhplVo63dmVxq4mpzdh5u0Y=
 github.com/sacloud/packages-go v0.0.8 h1:9l1XrukLdLPd6l/y2et9foQK2Z00ZQEGCInZMRGivAA=
