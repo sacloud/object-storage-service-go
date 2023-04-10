@@ -3,7 +3,7 @@ module github.com/sacloud/object-storage-service-go
 go 1.20
 
 require (
-	github.com/minio/minio-go/v7 v7.0.50
+	github.com/minio/minio-go/v7 v7.0.51
 	github.com/sacloud/api-client-go v0.2.7
 	github.com/sacloud/object-storage-api-go v0.0.9
 	github.com/sacloud/packages-go v0.0.8
