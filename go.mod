@@ -1,6 +1,8 @@
 module github.com/sacloud/object-storage-service-go
 
-go 1.21
+go 1.26.0
+
+toolchain go1.27.2
 
 require (
 	github.com/minio/minio-go/v7 v7.0.68
